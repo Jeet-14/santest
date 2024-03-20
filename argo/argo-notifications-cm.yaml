@@ -1,5 +1,8 @@
 apiVersion: v1
 data:
+  context: |
+    region: us-east-1
+    environmentName: staging
   service.slack: |
     slack-token: abcd
   template.app-created: |
@@ -417,7 +420,7 @@ data:
     slack:
       attachments: |
         [{
-          "title": "{{ .app.metadata.name}}",
+          "title": "{{ .app.metadata.name}} in {{ .context.environmentName }} env in the {{ .context.region }} region!"",
           "title_link":"{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
           "color": "#18be52",
           "fields": [
